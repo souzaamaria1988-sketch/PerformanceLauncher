@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Performance Launcher</string>
+    <string name="home_title">Início</string>
+    <string name="profiles_title">Perfis</string>
+    <string name="mods_title">Mods</string>
+    <string name="settings_title">Configurações</string>
+</resources>
