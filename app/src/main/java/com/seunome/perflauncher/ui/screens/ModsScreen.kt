@@ -191,15 +191,16 @@ fun ModDetailScreen(
                     }
                 }
             } else {
+                val detail = modDetail!!
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     // Header com imagem e informações
                     item {
                         Card(modifier = Modifier.fillMaxWidth()) {
                             Column {
-                                if (modDetail.imageUrl != null) {
+                                if (detail.imageUrl != null) {
                                     AsyncImage(
-                                        model = modDetail.imageUrl,
-                                        contentDescription = modDetail.mod.title,
+                                        model = detail.imageUrl,
+                                        contentDescription = detail.mod.title,
                                         modifier = Modifier
                                             .fillMaxWidth()
                                             .height(200.dp),
@@ -208,12 +209,12 @@ fun ModDetailScreen(
                                 }
                                 Column(modifier = Modifier.padding(16.dp)) {
                                     Text(
-                                        modDetail.mod.title,
+                                        detail.mod.title,
                                         style = MaterialTheme.typography.headlineMedium
                                     )
                                     Spacer(Modifier.height(8.dp))
                                     Text(
-                                        modDetail.mod.description,
+                                        detail.mod.description,
                                         style = MaterialTheme.typography.bodyMedium
                                     )
                                     Spacer(Modifier.height(12.dp))
@@ -228,7 +229,7 @@ fun ModDetailScreen(
                                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                                             )
                                             Text(
-                                                "${modDetail.mod.downloads}",
+                                                "${detail.mod.downloads}",
                                                 style = MaterialTheme.typography.titleMedium
                                             )
                                         }
@@ -239,14 +240,14 @@ fun ModDetailScreen(
                                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                                             )
                                             Text(
-                                                "${modDetail.versions.size}",
+                                                "${detail.versions.size}",
                                                 style = MaterialTheme.typography.titleMedium
                                             )
                                         }
                                     }
                                     Spacer(Modifier.height(12.dp))
                                     FlowRow(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                                        modDetail.mod.categories.forEach { category ->
+                                        detail.mod.categories.forEach { category ->
                                             Surface(
                                                 color = MaterialTheme.colorScheme.primaryContainer,
                                                 shape = MaterialTheme.shapes.small
@@ -274,7 +275,7 @@ fun ModDetailScreen(
                                 )
                                 Spacer(Modifier.height(8.dp))
                                 Text(
-                                    modDetail.fullDescription.replace(Regex("\\[.*?\\]\\(.*?\\)"), "")
+                                    detail.fullDescription.replace(Regex("\\[.*?\\]\\(.*?\\)"), "")
                                         .replace("#", "")
                                         .trim(),
                                     style = MaterialTheme.typography.bodyMedium
@@ -294,7 +295,7 @@ fun ModDetailScreen(
                     }
                     
                     // Lista de versões
-                    items(modDetail.versions) { version ->
+                    items(detail.versions) { version ->
                         Card(
                             modifier = Modifier
                                 .fillMaxWidth()
